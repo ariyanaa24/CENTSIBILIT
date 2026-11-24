@@ -1,0 +1,6 @@
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+
+// Gets { userId, email } that JwtStrategy put on the request
+export const CurrentUser = createParamDecorator((_data: unknown, ctx: ExecutionContext) => {
+  return ctx.switchToHttp().getRequest().user as { userId: number; email: string };
+});
